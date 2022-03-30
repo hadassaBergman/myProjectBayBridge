@@ -1,11 +1,15 @@
 [
   {
-    "product": "pomme", "price": 3, "quantity": 5
+    "product": "pomme", "price": 3, "quantity": 5, "priceForAll": 15
   },
   {
-    "product": "poire", "price": 4, "quantity": 8
+    "product": "poire", "price": 4, "quantity": 8,"priceForAll": 32
   },
   {
-    "product": "abricot", "price": 5, "quantity": 7
+    "product": "abricot", "price": 5, "quantity": 7,"priceForAll": 35
+  },
+  {
+    "product": "peche", "price": 4, "quantity": 6,"priceForAll": 24
   }
+
 ]

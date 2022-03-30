@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "browserfs": "^1.4.3",
     "dummy-component": "git+https://github.com/recraftrelic/dummy-react-npm-module.git",
     "fs": "^0.0.1-security",
     "react": "^16.8.6",

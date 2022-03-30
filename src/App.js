@@ -1,10 +1,10 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import data from "./data.json";
-
 const fs = require('fs');
 
 function App() {
+
 
     const [products, setProducts] = useState(data);
     console.log("products", products);
@@ -12,15 +12,26 @@ function App() {
     const [sum, setSum] = useState(0);
 
     useEffect(() => {
-        storeData(products, './data.json')
-    }, []);
-
-    useEffect(() => {
         let sumOfProducts = 0;
         for (let item of products) {
             sumOfProducts = sumOfProducts + ((item.price) * (item.quantity));
         }
-        setSum(sumOfProducts);
+        if(products.length<4){
+            setSum(sumOfProducts+15);
+        }
+        if(products.length>=4){
+            setSum(sumOfProducts+30);
+        }
+
+    }, [products]);
+
+    useEffect((item) => {
+        setProducts((ps) => ps.map((item2) => {
+                return {
+                    ...item2,
+                    priceForAll: item2.quantity * item2.price,
+                };
+        }));
     }, [products]);
 
     const storeData = (data, path) => {
@@ -35,8 +46,10 @@ function App() {
             <div className="App">
                 <h1 className={"title"}> Projet E-shop Hadassa Bergman</h1>
                 <div className={"left"}>
-                    <div> <span className={"item_title"}>Prix d'expedition: </span>15 euros</div>
-                    <div> <span className={"item_title"}>Prix total sans livraison:</span>{sum} euros</div>
+                    {products.length<4 && <div> <span className={"item_title"}>Prix d'expedition: </span>15 euros</div>}
+                    {products.length>=4 && <div> <span className={"item_title"}>Prix d'expedition: </span>30 euros</div>}
+                    {products.map((item) => (<div className={""}> <span className={"item_title"}>Prix des {item.product}s:</span>{item.priceForAll} euros </div>))}
+                    <div> <span className={"item_title"}>Prix total:</span>{sum} euros</div>
                 </div>
                 {products.map((item) => (<div className={'row'}>
                     <div className={"item"}><span className={"item_title"}>Produit:</span> {item.product} </div>
@@ -74,7 +87,8 @@ function App() {
                     }}> Supprimer</button>
                 </div>))}
             </div>
-           <div className={"center"}> <button className={"btn "} onClick={()=>{ storeData(products, './data.json')
+           <div className={"center"}> <button className={"btn "} onClick={()=>{
+               storeData(JSON.stringify(products), './data.json')
            }}> Sauvegarder </button> </div>
         </>
     );
