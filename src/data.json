@@ -1,0 +1,11 @@
+[
+  {
+    "product": "pomme", "price": 3, "quantity": 5
+  },
+  {
+    "product": "poire", "price": 4, "quantity": 8
+  },
+  {
+    "product": "abricot", "price": 5, "quantity": 7
+  }
+]
