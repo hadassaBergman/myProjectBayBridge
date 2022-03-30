@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dummy-component": "git+https://github.com/recraftrelic/dummy-react-npm-module.git",
+    "fs": "^0.0.1-security",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "dummy-component": "git+https://github.com/recraftrelic/dummy-react-npm-module.git"
+    "react-scripts": "3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
